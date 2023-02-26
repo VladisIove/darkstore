@@ -4,13 +4,13 @@ For running localy need do several steps:
 
 - create env files in folder .provisions/secrets:
     1. First file is envs for database:
-        > POSTGRES_USER
-        > POSTGRES_PASSWORD
-        > POSTGRES_DB
+        - POSTGRES_USER
+        - POSTGRES_PASSWORD
+        - POSTGRES_DB
     2. Second file is env for fastapi application:
-        > JWT_TOKEN, default is your-256-bit-secret
-        > JWT_ALGORITM, default is HS256
-        > FINHUB_API_KEY
+        - JWT_TOKEN, default is your-256-bit-secret
+        - JWT_ALGORITM, default is HS256
+        - FINHUB_API_KEY
 
 - run command `make build`
 
