@@ -1,0 +1,16 @@
+/venv/
+/.vscode/
+
+/.idea/
+/.elasticbeanstalk/
+pyrightconfig.json
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.scssc
+
+.DS_Store
+
+# secrets
+.provisions/secrets/*

@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - db__driver:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    env_file:
+      - ./.provisions/secrets/db.envs
+
+
+  portfolio_manager_dev:
+    build: 
+      context: ./.
+      dockerfile: ./.provisions/docker/portfolio_manager_dev/Dockerfile
+    container_name: portfolio_manager_dev
+    volumes:
+      - ./portfolio_manager:/var/app
+    ports:
+      - "80:80"
+    env_file:
+      - ./.provisions/secrets/db.envs
+      - ./.provisions/secrets/portfolio_manager.envs
+    command: bash -c "aerich upgrade; uvicorn main:app --host 0.0.0.0 --port 80 --reload"
+    depends_on:
+      - db
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  db__driver:
+    driver: local
+
+
